@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+   
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+        <script src="gesture-detector.js"></script>
+        <script src="gesture-handler.js"></script>
+    </head>
+
+    <body style="margin : 0px; overflow: hidden;">
+    
+        <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+            renderer="logarithmicDepthBuffer: true;" vr-mode-ui="enabled: false" gesture-detector id="scene">
+          
+            <a-assets>
+                <a-asset-item id="modelo" src="modelos/van_gogh_museum_-_self_portrait_1889.glb" timeout="10000"></a-asset-item>
+                <a-asset-item id="modelo2" src="modelos/van_gogh_museum_-_olive_grove.glb" timeout="10000"></a-asset-item>
+                <a-asset-item id="modelo3" src="modelos/psx_painting.glb" timeout="10000"></a-asset-item>
+                <a-asset-item id="modelo4" src="modelos/van_goghs_irises_in_art_nouveau_frame.glb" timeout="10000"></a-asset-item>
+            
+                <audio id="Caprice" src="audios/Caprice.mp3" preload="auto"></audio>
+            </a-assets>
+    
+            <a-marker type="barcode" value="5" raycaster="objects: .clickable"
+                emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+                <a-entity
+                    gltf-model="#modelo" scale="20 20 10" rotation= "51 -51 24" class="clickable"
+                    gesture-handler
+                    sound="src: #Caprice; autoplay: false; volume: 1">
+                </a-entity>
+                <a-entity text="value: Batman;" position= "1 1 1"></a-entity>
+            </a-marker>
+    
+            <a-marker type="barcode" value="10" raycaster="objects: .clickable"
+                emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+                <a-entity
+                    gltf-model="#modelo2" scale="5 5 5" rotation= "51 -51 26" class="clickable"
+                    gesture-handler
+                    sound="src: #audioSarcosuchus; autoplay: false; volume: 1">
+                </a-entity>
+            </a-marker>
+
+            <a-marker type="barcode" value="10" raycaster="objects: .clickable"
+                emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+                <a-entity
+                    gltf-model="#modelo3" scale="5 5 5" rotation= "51 -51 26" class="clickable"
+                    gesture-handler
+                    sound="src: #audioSarcosuchus; autoplay: false; volume: 1">
+                </a-entity>
+            </a-marker>
+
+            <a-marker type="barcode" value="10" raycaster="objects: .clickable"
+                emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+                <a-entity
+                    gltf-model="#modelo4" scale="5 5 5" rotation= "51 -51 26" class="clickable"
+                    gesture-handler
+                    sound="src: #audioSarcosuchus; autoplay: false; volume: 1">
+                </a-entity>
+            </a-marker>
+        
+            <a-entity camera></a-entity>
+        
+        </a-scene>
+
+		<script>
+			var delfinAudio = document.getElementById('Caprice');
+			var sarcosuchusAudio = document.getElementById('audioSarcosuchus');
+
+		   
+			document.querySelector('[value="7"]').addEventListener('markerFound', function () {
+				delfinAudio.play();
+			});
+
+			
+			document.querySelector('[value="7"]').addEventListener('markerLost', function () {
+				delfinAudio.pause();
+				delfinAudio.currentTime = 0; // reiniciar el audio desde el inicio
+			});
+
+			
+			document.querySelector('[value="6"]').addEventListener('markerFound', function () {
+				sarcosuchusAudio.play();
+			});
+
+		  
+			document.querySelector('[value="6"]').addEventListener('markerLost', function () {
+				sarcosuchusAudio.pause();
+				sarcosuchusAudio.currentTime = 0;
+			});
+		</script>
+        
+    </body>
+</html>
