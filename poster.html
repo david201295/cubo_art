@@ -1,96 +1,96 @@
 <!DOCTYPE html>
 <html>
-   <head>
-       <!-- script de A-Frame version 1.0.4 -->
-       <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-       <!-- script de AR.js con soporte de marker + location -->
-       <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
-       <!-- scripts para detección y manejo de gestos -->
-       <script src="./scripts/gesture-detector.js"></script>
-       <script src="./scripts/gesture-handler.js"></script>
-   </head>
+<head>
+    <!-- script de A-Frame version 1.0.4 -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <!-- script de AR.js con soporte de marker + location -->
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <!-- scripts para detección y manejo de gestos -->
+    <script src="gesture-detector.js"></script>
+    <script src="gesture-handler.js"></script>
+</head>
 
-   <body style="margin: 0; overflow: hidden;">
-       <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" 
-                renderer="logarithmicDepthBuffer: true;" vr-mode-ui="enabled: false" gesture-detector id="scene">
+<body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" 
+             renderer="logarithmicDepthBuffer: true;" vr-mode-ui="enabled: false" gesture-detector id="scene">
 
-           <a-assets>
-               <!-- Modelos GLB -->
-               <a-asset-item id="modelo" src="van_gogh_museum_-_self_portrait_1889.glb" timeout="10000"></a-asset-item>
-               <a-asset-item id="modelo2" src="van_gogh_museum_-_olive_grove.glb" timeout="10000"></a-asset-item>
-               <a-asset-item id="modelo3" src="psx_painting.glb" timeout="10000"></a-asset-item>
-               <a-asset-item id="modelo4" src="van_goghs_irises_in_art_nouveau_frame.glb" timeout="10000"></a-asset-item>
+        <a-assets>
+            <!-- Modelos GLB -->
+            <a-asset-item id="modelo" src="van_gogh_museum_-_self_portrait_1889.glb" timeout="10000"></a-asset-item>
+            <a-asset-item id="modelo2" src="van_gogh_museum_-_olive_grove.glb" timeout="10000"></a-asset-item>
+            <a-asset-item id="modelo3" src="psx_painting.glb" timeout="10000"></a-asset-item>
+            <a-asset-item id="modelo4" src="van_goghs_irises_in_art_nouveau_frame.glb" timeout="10000"></a-asset-item>
 
-               <!-- Audios -->
-               <audio id="Caprice" src="Caprice.mp3" preload="auto"></audio>
-               <audio id="Alice" src="Alice.mp3" preload="auto"></audio>
-           </a-assets>
+            <!-- Audios -->
+            <audio id="Caprice" src="Caprice.mp3" preload="auto"></audio>
+            <audio id="Alice" src="Alice.mp3" preload="auto"></audio>
+        </a-assets>
 
-           <!-- Marcadores con modelos y sonidos -->
-           <a-marker type="barcode" value="31" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-               <a-entity gltf-model="#modelo2" scale="4 4 2" rotation="90 180 270" class="clickable" gesture-handler 
-                         sound="src: #Caprice; autoplay: false; volume: 1">
-               </a-entity>
-           </a-marker>
+        <!-- Marcadores con modelos y sonidos -->
+        <a-marker type="barcode" value="31" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+            <a-entity gltf-model="#modelo2" scale="4 4 2" rotation="90 180 270" class="clickable" gesture-handler 
+                      sound="src: #Caprice; autoplay: false; volume: 1">
+            </a-entity>
+        </a-marker>
 
-           <a-marker type="barcode" value="24" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-               <a-entity gltf-model="#modelo2" scale="4 4 2" rotation="90 180 270" class="clickable" gesture-handler 
-                         sound="src: #Alice; autoplay: false; volume: 1">
-               </a-entity>
-           </a-marker>
+        <a-marker type="barcode" value="24" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+            <a-entity gltf-model="#modelo2" scale="4 4 2" rotation="90 180 270" class="clickable" gesture-handler 
+                      sound="src: #Alice; autoplay: false; volume: 1">
+            </a-entity>
+        </a-marker>
 
-           <a-marker type="barcode" value="04" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-               <a-entity gltf-model="#modelo3" scale="4 4 2" rotation="90 180 270" class="clickable" gesture-handler 
-                         sound="src: #Caprice; autoplay: false; volume: 1">
-               </a-entity>
-           </a-marker>
+        <a-marker type="barcode" value="04" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+            <a-entity gltf-model="#modelo3" scale="4 4 2" rotation="90 180 270" class="clickable" gesture-handler 
+                      sound="src: #Caprice; autoplay: false; volume: 1">
+            </a-entity>
+        </a-marker>
 
-           <a-marker type="barcode" value="37" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-               <a-entity gltf-model="#modelo4" scale="4 4 2" rotation="90 180 270" class="clickable" gesture-handler 
-                         sound="src: #Alice; autoplay: false; volume: 1">
-               </a-entity>
-           </a-marker>
+        <a-marker type="barcode" value="37" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+            <a-entity gltf-model="#modelo4" scale="4 4 2" rotation="90 180 270" class="clickable" gesture-handler 
+                      sound="src: #Alice; autoplay: false; volume: 1">
+            </a-entity>
+        </a-marker>
 
-           <!-- Cámara -->
-           <a-entity camera></a-entity>
-       </a-scene>
+        <!-- Cámara -->
+        <a-entity camera></a-entity>
+    </a-scene>
 
-       <script>
-           // Manejo de eventos para reproducir y pausar los audios al detectar marcadores
-           var delfinAudio = document.getElementById('Caprice');
-           var sarcosuchusAudio = document.getElementById('Alice');
+    <script>
+        // Manejo de eventos para reproducir y pausar los audios al detectar marcadores
+        var capriceAudio = document.getElementById('Caprice');
+        var aliceAudio = document.getElementById('Alice');
 
-           document.querySelector('[value="31"]').addEventListener('markerFound', function () {
-               delfinAudio.play();
-           });
-           document.querySelector('[value="31"]').addEventListener('markerLost', function () {
-               delfinAudio.pause();
-               delfinAudio.currentTime = 0;
-           });
+        document.querySelector('[value="31"]').addEventListener('markerFound', function () {
+            capriceAudio.play();
+        });
+        document.querySelector('[value="31"]').addEventListener('markerLost', function () {
+            capriceAudio.pause();
+            capriceAudio.currentTime = 0;
+        });
 
-           document.querySelector('[value="24"]').addEventListener('markerFound', function () {
-               sarcosuchusAudio.play();
-           });
-           document.querySelector('[value="24"]').addEventListener('markerLost', function () {
-               sarcosuchusAudio.pause();
-               sarcosuchusAudio.currentTime = 0;
-           });
+        document.querySelector('[value="24"]').addEventListener('markerFound', function () {
+            aliceAudio.play();
+        });
+        document.querySelector('[value="24"]').addEventListener('markerLost', function () {
+            aliceAudio.pause();
+            aliceAudio.currentTime = 0;
+        });
 
-           document.querySelector('[value="04"]').addEventListener('markerFound', function () {
-               delfinAudio.play();
-           });
-           document.querySelector('[value="04"]').addEventListener('markerLost', function () {
-               delfinAudio.pause();
-               delfinAudio.currentTime = 0;
-           });
+        document.querySelector('[value="04"]').addEventListener('markerFound', function () {
+            capriceAudio.play();
+        });
+        document.querySelector('[value="04"]').addEventListener('markerLost', function () {
+            capriceAudio.pause();
+            capriceAudio.currentTime = 0;
+        });
 
-           document.querySelector('[value="37"]').addEventListener('markerFound', function () {
-               sarcosuchusAudio.play();
-           });
-           document.querySelector('[value="37"]').addEventListener('markerLost', function () {
-               sarcosuchusAudio.pause();
-               sarcosuchusAudio.currentTime = 0;
-           });
-       </script>
-   </body>
+        document.querySelector('[value="37"]').addEventListener('markerFound', function () {
+            aliceAudio.play();
+        });
+        document.querySelector('[value="37"]').addEventListener('markerLost', function () {
+            aliceAudio.pause();
+            aliceAudio.currentTime = 0;
+        });
+    </script>
+</body>
 </html>
